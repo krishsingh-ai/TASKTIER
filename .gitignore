@@ -1,0 +1,32 @@
+# Build
+target/
+*.war
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database (local dev only)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Env
+.env
+.env.*
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd

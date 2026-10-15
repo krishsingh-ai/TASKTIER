@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>TaskTier</display-name>
+    <description>College-level Java Web Application - Task Prioritization System</description>
+
+    <!-- Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Session Timeout Configuration (30 minutes) -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>false</secure>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <!-- Filter Declarations -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.tasktier.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/dashboard</url-pattern>
+        <url-pattern>/dashboard.jsp</url-pattern>
+        <url-pattern>/tasks/*</url-pattern>
+        <url-pattern>/tasks</url-pattern>
+        <url-pattern>/tasks.jsp</url-pattern>
+        <url-pattern>/time-entries/*</url-pattern>
+        <url-pattern>/time-entries</url-pattern>
+        <url-pattern>/categories/*</url-pattern>
+        <url-pattern>/categories</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/admin</url-pattern>
+        <url-pattern>/admin.jsp</url-pattern>
+        <url-pattern>/progress</url-pattern>
+        <url-pattern>/progress.jsp</url-pattern>
+    </filter-mapping>
+
+    <!-- Servlet Declarations & Mappings -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+        <url-pattern>/admin-login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SignupServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.SignupServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignupServlet</servlet-name>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+        <url-pattern>/dashboard.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TaskServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.TaskServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TaskServlet</servlet-name>
+        <url-pattern>/tasks</url-pattern>
+        <url-pattern>/tasks/*</url-pattern>
+        <url-pattern>/tasks.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TimeEntryServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.TimeEntryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimeEntryServlet</servlet-name>
+        <url-pattern>/time-entries</url-pattern>
+        <url-pattern>/time-entries/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.CategoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/categories</url-pattern>
+        <url-pattern>/categories/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+        <url-pattern>/admin.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProgressServlet</servlet-name>
+        <servlet-class>com.tasktier.servlet.ProgressServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProgressServlet</servlet-name>
+        <url-pattern>/progress</url-pattern>
+        <url-pattern>/progress.jsp</url-pattern>
+    </servlet-mapping>
+
+    <!-- Application Lifecycle Listener -->
+    <listener>
+        <listener-class>com.tasktier.config.AppInitializer</listener-class>
+    </listener>
+
+</web-app>
